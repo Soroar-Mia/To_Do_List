@@ -1,0 +1,17 @@
+{%extends 'base.html'%}
+{% load crispy_forms_tags %}
+{% block content%}
+
+<div style="width:50%; margin:auto;">
+    <div class="d-flex justify-content-center">
+        <h1 class="bg-success p-2 m-4 rounded fw-bold text-center  text-white bg-opacity-75" style="width: 20rem;">Add Tasks</h1>
+    </div>
+    <form method="post" method="/show_task/">
+        {% csrf_token %}
+        {{form|crispy}}
+        <button class="btn btn-info" type="submit">Submit</button>
+    </form>
+</div>
+
+
+{%endblock%}

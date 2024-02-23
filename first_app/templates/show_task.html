@@ -1,0 +1,36 @@
+{%extends 'base.html'%}
+
+{% block content%}
+
+<div style="width:80%; margin:auto;">
+    <div class="d-flex justify-content-center">
+        <h1 class="bg-success p-2 m-4 rounded fw-bold text-center  text-white bg-opacity-75" style="width: 20rem;">Tasks</h1>
+    </div>
+    <table class="table table-bordered">
+        <thead>
+          <tr class="text-center">
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">status</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for item in data %}
+          <tr class="text-center">
+            <td>{{item.Title}}</td>
+            <td>{{item.Description}}</td>
+            <td>{{item.status}}</td>
+            <td class="d-flex justify-content-center"> 
+                <a href="{% url 'delete_task' item.id %}" class="btn btn-danger btn-sm">Delete</a>
+                <a href="{% url 'edit_task' item.id %}" class="btn mx-2 btn-info btn-sm">Edit</a>
+                <a href="{% url 'is_completed' item.id %}" class="btn btn-success btn-sm">Complete</a>
+            </td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+
+</div>
+
+{%endblock%}
